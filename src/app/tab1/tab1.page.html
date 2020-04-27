@@ -1,0 +1,143 @@
+<ion-header [hidden]=blnFilterBar>
+  <ion-toolbar>
+    <ion-buttons (click)="onClickLogOut()">
+      <ion-title color="primary"><B>INCARCO</B></ion-title>
+      <ion-item>
+        <ion-avatar>
+          <img src="assets/img/logProfile.jpg">
+        </ion-avatar>
+      </ion-item>
+    </ion-buttons>
+   
+  </ion-toolbar>
+  </ion-header>
+
+  
+
+<ion-content [fullscreen]="false" [hidden]=blnFilterBar>
+
+  <ion-grid >
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="8" size-lg="3" size-xs="12">
+        <!-- <ion-col align-self-center  size-xs="12"> -->
+        <div padding>
+
+          <ion-item>
+            <!-- Segment in a toolbar -->
+            <ion-toolbar>
+              <ion-segment (ionChange)="segmentChanged($event)" value="car" >
+                <ion-segment-button  value="car">
+                  <ion-icon name="car-outline"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button value="bick">
+                  <ion-icon name="bicycle-outline"></ion-icon>
+                </ion-segment-button>
+              </ion-segment>
+              
+            </ion-toolbar>
+
+          </ion-item>
+          <div *ngIf="this.objSearchData.strSelectType == 'car';">
+          <ion-item>
+              <ion-label>Select Price Limit</ion-label>
+              <ion-select [(ngModel)]="objSearchData.budget_id" (ionChange)="onChangePriceLimitData($event)"  [interfaceOptions]="customAlertOptions" interface="popover"  placeholder="Select One" >
+                <ion-select-option  *ngFor="let model of objAllPricelimitCar" value={{model.id}} > {{model.title}}</ion-select-option>
+              </ion-select>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>Select Brand</ion-label>
+            <ion-select [(ngModel)]="objSearchData.brand_id" (ionChange)="onChangeBranchData($event)" [interfaceOptions]="customPopoverOptions" interface="action-sheet" placeholder="Select One">
+              <ion-select-option  *ngFor="let model of objAllBrandsCar" value={{model.id}} > {{model.brand_name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item >
+            <ion-label>Select Model</ion-label>
+            <ion-select [(ngModel)]="objSearchData.model_id" (ionChange)="onChangeModelData($event)" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One">
+              <ion-select-option  *ngFor="let model of objAllModelsCar" value={{model.id}} > {{model.model_name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+         
+        
+          
+        </div>
+        <div *ngIf="this.objSearchData.strSelectType == 'bick';">
+          <ion-item>
+            <ion-label>Select Price Limit</ion-label>
+            <ion-select [(ngModel)]="objSearchData.budget_id" (ionChange)="onChangePriceLimitData($event)"  [interfaceOptions]="customAlertOptions" interface="popover"  placeholder="Select One" >
+              <ion-select-option  *ngFor="let model of objAllPricelimitBike" value={{model.title}} > {{model.title}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Select Brand</ion-label>
+          <ion-select [(ngModel)]="objSearchData.brand_id" (ionChange)="onChangeBranchData($event)" [interfaceOptions]="customPopoverOptions" interface="action-sheet" placeholder="Select One">
+            <ion-select-option  *ngFor="let model of objAllBrandsBike" value={{model.id}} > {{model.brand_name_bike}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item >
+          <ion-label>Select Model</ion-label>
+          <ion-select [(ngModel)]="objSearchData.model_id" (ionChange)="onChangeModelData($event)" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One">
+            <ion-select-option  *ngFor="let model of objAllModelsBike" value={{model.id}} > {{model.model_name_bike}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        </div>  
+      </div>
+      <div class="style">
+        <ion-button shape="round" fill="outline" (click)="onSearchButtonClick()">Quick Search</ion-button>
+      </div>
+      
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+</ion-content>
+
+<ion-header [hidden]=blnSearchresult>
+  <ion-toolbar>
+    
+    <ion-buttons slot="start">
+      <ion-button (click)="onClickCloseModel()">
+        <ion-icon name="arrow-back-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Search Data</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding [hidden]=blnSearchresult>
+  
+  <ion-list   *ngFor="let item of arrayOfAllVehicleDetails">
+    <ion-item *ngIf="this.objSearchData.strSelectType =='bick'" button  (click)="onClickDetailsPage(item,'BIKE')" >
+
+        <ion-thumbnail slot="start">
+          <img src={{item.main_thumb_url}}>
+        </ion-thumbnail>                  
+        <ion-label>
+          <h2>{{item.brand_name.brand_name_bike}}</h2>
+          <p>{{item.model_name.model_name_bike}}</p>
+        </ion-label>
+        <ion-text fill="outline" slot="end">Rs:{{item.avg_ex_show_room_price}}</ion-text>
+      </ion-item>
+      <ion-item *ngIf="this.objSearchData.strSelectType =='car'" button   (click)="onClickDetailsPage(item,'CAR')">
+      
+        <ion-thumbnail slot="start">
+          <img src={{item.main_thumb_url}}>
+        </ion-thumbnail>                  
+        <ion-label>
+          <h2>{{item.brand_name.brand_name_bike}}</h2>
+          <p>{{item.model_name.model_name_bike}}</p>
+        </ion-label>
+        <ion-text fill="outline" slot="end">Rs:{{item.avg_ex_show_room_price}}</ion-text>
+    
+    </ion-item>
+  </ion-list>
+
+  
+
+
+
+</ion-content>
+

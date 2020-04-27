@@ -1,0 +1,57 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar>
+    
+     
+      <ion-item lines="none" >
+        <ion-avatar slot="start">
+          <img src="assets/icon/icon.png">
+        </ion-avatar>
+        <ion-title color="primary"><B>INCARCO</B></ion-title>
+      </ion-item>
+   
+   
+  </ion-toolbar>
+  </ion-header> -->
+
+<ion-content class="fromstyle"  [fullscreen]="true">
+  
+  <form class="fromstyle" [formGroup]="loginForm" >
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title class="styletext">Login</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+         
+          <ion-input  class="styletext" placeholder="Enter the email" type="text" formControlName="email" name="email">
+            <ion-icon class="styletext" lot="start" name="mail-outline"></ion-icon>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+        
+          <ion-input  class="styletext"  placeholder=" Enter the password"  type="password" formControlName="password" name="password">
+            <ion-icon  class="styletext" slot="start" name="key-outline"></ion-icon>
+          </ion-input>
+        </ion-item>
+        <ion-item lines="none"  padding-top>
+          <ion-button expand="full" fill="outline" size="default" shape="round" color="light" type="submit" [disabled]="!loginForm.valid" (click)="onFormSubmit(loginForm.value)">
+            Login
+            
+            <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+          </ion-button>
+          
+        </ion-item>
+        <ion-item lines="none">
+          <ion-button type="button" fill="outline" expand="block" size="default" shape="round" color="medium" (click)="register()">
+            Register
+            <ion-icon slot="start"  name="open-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+       
+
+        
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>
+

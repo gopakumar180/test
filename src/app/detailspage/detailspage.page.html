@@ -1,0 +1,214 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-button (click)="onBackDetails()">
+                <ion-icon name="arrow-back-circle-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Search Data</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding #content>
+
+    <ion-grid fixed>
+
+
+        <ion-row>
+            <ion-col size="12">
+                <ion-slides pager="true" [options]="slideOpts">
+                    <ion-slide *ngFor="let strSlide of arraySlideData">
+                        <ion-card *ngIf="this.strTypeValue =='CAR'">
+                            <img src="https://storage.googleapis.com/incarco/cars/large/{{strSlide.url}}" />
+                            <ion-card-subtitle>{{objItemDetails.brand_name.brand_name}}</ion-card-subtitle>
+                            <ion-card-title>{{objItemDetails.model_name.model_name}}</ion-card-title>
+                        </ion-card>
+                        <ion-card *ngIf="this.strTypeValue =='BIKE'">
+                            <img src="https://storage.googleapis.com/incarco/bikes/large/{{strSlide.url}}" />
+                            <ion-card-subtitle>{{objItemDetails.brand_name.brand_name_bike}}</ion-card-subtitle>
+                            <ion-card-title>{{objItemDetails.model_name.model_name_bike}}</ion-card-title>
+                        </ion-card>
+                    </ion-slide>
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-list lines="full">
+        <ion-item lines="none" class="stylelist">
+
+            <ion-button color="secondary" (click)="gotoPriceBreaups(objItemDetails.id,this.strTypeValue)">Price Break up</ion-button>
+            <ion-button color="secondary" (click)="presentModal()">Get a Quate</ion-button>
+            <ion-button color="secondary" (click)="presentModal()">Test Drive</ion-button>
+        </ion-item>
+
+        <ion-item lines="none">
+            <ion-text class="ls_head" slot="start">Description:</ion-text>
+        </ion-item>
+        <ion-item>
+            <!-- <ion-icon name="heart-outline">Love</ion-icon> -->
+            <ion-text slot="start">{{objItemDetails.description}}</ion-text>
+        </ion-item>
+    </ion-list>
+
+    <div padding>
+
+        <ion-item>
+            <!-- Segment in a toolbar -->
+            <ion-toolbar>
+                <ion-segment (ionChange)="onFeaturesSegmentChanged($event)" value="A">
+                    <ion-segment-button value="A">
+                        <!-- <ion-icon name="car-outline"></ion-icon> -->
+                        <ion-label class="ls_text">Overview</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="B">
+                        <!-- <ion-icon name="bicycle-outline"></ion-icon> -->
+                        <ion-label class="ls_text">Features</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="C">
+                        <!-- <ion-icon name="bicycle-outline"></ion-icon> -->
+                        <ion-label class="ls_text">Specification </ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+
+            </ion-toolbar>
+
+        </ion-item>
+
+        <div *ngIf="this.strSelectType == 'A';">
+            <ion-list lines="full" *ngFor="let objDataOverview of objOverview | keyvalue">
+                <ion-item *ngIf="objDataOverview.value">
+                    <ion-label class="ls_head" slot="start">{{objDataOverview.key}}</ion-label>
+                    <ion-text slot="end" class="ls_text">{{objDataOverview.value}}</ion-text>
+                </ion-item>
+            </ion-list>
+            <!-- <ion-list lines="full" >
+        <ion-item >
+          <ion-label  class="ls_head" slot="start">Variant:</ion-label>
+          <ion-text slot="end" class="ls_text">{{objItemDetails.variant}}</ion-text>
+        </ion-item>
+        <ion-item >
+          <ion-label  class="ls_head" slot="start">Length:</ion-label>
+          <ion-text slot="end" class="ls_text">{{objItemDetails.length}}</ion-text>
+        </ion-item>
+
+        <ion-item >
+          <ion-label  class="ls_head" slot="start">Height:</ion-label>
+          <ion-text slot="end" class="ls_text">{{objItemDetails.height}}</ion-text>
+        </ion-item>
+
+        <ion-item >
+          <ion-label  class="ls_head" slot="start">Width:</ion-label>
+          <ion-text slot="end" class="ls_text">{{objItemDetails.width}}</ion-text>
+        </ion-item>
+
+
+        <ion-item >
+          <ion-label  class="ls_head" slot="start">Seating Capacity:</ion-label>
+          <ion-text slot="end" class="ls_text">{{objItemDetails.seating_capacity}}</ion-text>
+        </ion-item>
+
+
+        <ion-item >
+          <ion-label  class="ls_head" slot="start">Displacement:</ion-label>
+          <ion-text slot="end" class="ls_text">{{objItemDetails.displacement}}</ion-text>
+        </ion-item>
+
+
+        <ion-item >
+          <ion-label  class="ls_head" slot="start">Variant:</ion-label>
+          <ion-text slot="end" class="ls_text">{{objItemDetails.variant}}</ion-text>
+        </ion-item>
+
+        <ion-item >
+          <ion-label  class="ls_head" slot="start">Variant:</ion-label>
+          <ion-text slot="end" class="ls_text">{{objItemDetails.variant}}</ion-text>
+        </ion-item>
+
+        <ion-item >
+          <ion-label  class="ls_head" slot="start">Fuel Type:</ion-label>
+          <ion-text slot="end" class="ls_text">{{objItemDetails.fuel_type}}</ion-text>
+        </ion-item>
+      </ion-list> -->
+        </div>
+        <div *ngIf="this.strSelectType == 'B';">
+            <ion-list lines="full" *ngFor="let objDataFeatures of objFeatures | keyvalue">
+                <ion-item *ngIf="objDataFeatures.value">
+                    <ion-label class="ls_head" slot="start">{{objDataFeatures.key}}</ion-label>
+                    <ion-text slot="end" class="ls_text">{{objDataFeatures.value}}</ion-text>
+                </ion-item>
+            </ion-list>
+            <!-- <ion-list lines="full" >
+          <ion-item >
+            <ion-label  class="ls_head" slot="start">Power:</ion-label>
+            <ion-text slot="end" class="ls_text">{{objItemDetails.power}}</ion-text>
+          </ion-item>
+          <ion-item >
+            <ion-label  class="ls_head" slot="start">Torque:</ion-label>
+            <ion-text slot="end" class="ls_text">{{objItemDetails.torque}}</ion-text>
+          </ion-item>
+  
+          <ion-item >
+            <ion-label  class="ls_head" slot="start">Mileage:</ion-label>
+            <ion-text slot="end" class="ls_text">{{objItemDetails.mileage}}</ion-text>
+          </ion-item>
+  
+          <ion-item >
+            <ion-label  class="ls_head" slot="start">Transmission Type:</ion-label>
+            <ion-text slot="end" class="ls_text">{{objItemDetails.transmission_type}}</ion-text>
+          </ion-item>
+  
+  
+          <ion-item >
+            <ion-label  class="ls_head" slot="start">Gears:</ion-label>
+            <ion-text slot="end" class="ls_text">{{objItemDetails.gears}}</ion-text>
+          </ion-item>
+  
+  
+          <ion-item >
+            <ion-label  class="ls_head" slot="start">Drive Train:</ion-label>
+            <ion-text slot="end" class="ls_text">{{objItemDetails.drive_train}}</ion-text>
+          </ion-item>
+  
+  
+          <ion-item >
+            <ion-label  class="ls_head" slot="start">Air Conditioner:</ion-label>
+            <ion-text slot="end" class="ls_text">{{objItemDetails.air_conditioner}}</ion-text>
+          </ion-item>
+  
+          <ion-item >
+            <ion-label  class="ls_head" slot="start">Power Windows:</ion-label>
+            <ion-text slot="end" class="ls_text">{{objItemDetails.power_windows}}</ion-text>
+          </ion-item>
+  
+          <ion-item >
+            <ion-label  class="ls_head" slot="start">Central Locking:</ion-label>
+            <ion-text slot="end" class="ls_text">{{objItemDetails.central_locking}}</ion-text>
+          </ion-item>
+        </ion-list> -->
+        </div>
+        <div *ngIf="this.strSelectType == 'C';">
+            <ion-list lines="full" *ngFor="let objDataSpecification of objSpecification | keyvalue">
+                <ion-item *ngIf="objDataSpecification.value">
+                    <ion-label class="ls_head" slot="start">{{objDataSpecification.key}}</ion-label>
+                    <ion-text slot="end" class="ls_text">{{objDataSpecification.value}}</ion-text>
+                </ion-item>
+            </ion-list>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+</ion-content>

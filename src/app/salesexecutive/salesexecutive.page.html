@@ -1,0 +1,109 @@
+<ion-header >
+  <ion-toolbar>   
+    <ion-buttons (click)="onClickLogOut()">
+      <ion-title color="primary"><B>INCARCO</B></ion-title>
+      <ion-item>
+        <ion-avatar>
+          <img src="assets/img/logProfile.jpg">
+        </ion-avatar>
+      </ion-item>
+    </ion-buttons>
+   
+  </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+ 
+
+
+  <ion-grid >
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="8" size-lg="3" size-xs="12">
+        <!-- <ion-col align-self-center  size-xs="12"> -->
+        <div padding>
+          <ion-refresher slot="fixed" (ionRefresh)="initializeApp(true,$event)">
+            <ion-refresher-content>
+            </ion-refresher-content>
+          </ion-refresher>
+          <ion-item>
+            <!-- Segment in a toolbar -->
+            <ion-toolbar>
+              <ion-segment (ionChange)="segmentChanged($event)" value="OnBOUND" >
+                <ion-segment-button  value="OnBOUND">
+                  <ion-icon name="pricetags-outline"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button value="UNREAD">
+                  <ion-icon name="eye-outline"></ion-icon>
+                  
+                </ion-segment-button>
+                <ion-segment-button value="VIEW">
+                  <ion-icon name="eye-off-outline"></ion-icon>
+                </ion-segment-button>
+              </ion-segment>
+            </ion-toolbar>
+          </ion-item>
+
+          <div *ngIf="this.strSelectType == 'OnBOUND'">
+            <ion-item  *ngFor="let item of arrayOnBound">        
+              <ion-label>
+                <h2>{{item.brand}} {{item.model}}</h2> 
+                <h4>{{item.variant}}</h4> 
+                <p>{{item.phone}}</p>
+              </ion-label>
+              <ion-button *ngIf="item.status == 'unread'" fill="outline" slot="end" (click)="onClickRead(item)">View</ion-button>
+            </ion-item> 
+            <ion-item  *ngIf="arrayOnBound.length ==0">        
+              <ion-label>
+                <h2>NO Data Found</h2> 
+                <h4></h4> 
+                <p>check net connection</p>
+              </ion-label>
+              
+            </ion-item> 
+        </div>
+
+        <div *ngIf="this.strSelectType == 'UNREAD'">
+          <ion-item  *ngFor="let item of arrayUnRead">        
+            <ion-label>
+              <h2>{{item.brand}} {{item.model}}</h2> 
+              <h4>{{item.variant}}</h4> 
+              <p>{{item.phone}}</p>
+            </ion-label>
+            <ion-button *ngIf="item.status == 'unread'" fill="outline" slot="end" (click)="onClickRead(item)">View</ion-button>
+          </ion-item> 
+          <ion-item  *ngIf="arrayUnRead.length ==0">        
+            <ion-label>
+              <h2>NO Data Found</h2> 
+              <h4></h4> 
+              <p>check net connection</p>
+            </ion-label>
+            
+          </ion-item> 
+        </div>  
+
+        <div *ngIf="this.strSelectType == 'VIEW'">
+          <ion-item  *ngFor="let item of arrayRead">        
+            <ion-label>
+              <h2>{{item.brand}} {{item.model}}</h2> 
+              <h4>{{item.variant}}</h4> 
+              <p>{{item.phone}}</p>
+            </ion-label>
+            <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+          </ion-item> 
+          <ion-item  *ngIf="arrayRead.length ==0">        
+            <ion-label>
+              <h2>NO Data Found</h2> 
+              <h4></h4> 
+              <p>check net connection</p>
+            </ion-label>
+            
+          </ion-item> 
+        </div>  
+      </div>
+      
+      
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+ </ion-content>

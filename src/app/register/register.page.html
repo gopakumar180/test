@@ -1,0 +1,188 @@
+<ion-content [fullscreen]="true">
+    <ion-card *ngIf='loaded === true'>
+        <ion-card-header>
+            <ion-card-subtitle>{{objectDetails.brand}}>{{objectDetails.Model}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-grid style="background-color:#fafcfb">
+            <ion-row>
+                <ion-col>
+                    <div>Ex Showroom : {{objectDetails['avg ex show room price']}}</div>
+                </ion-col>
+                <ion-col>
+                    <div>Road Tax : {{objectDetails['road tax']}} </div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <div>Insurance : {{objectDetails.insurance}}</div>
+                </ion-col>
+                <ion-col>
+                    <div>TDS : {{objectDetails.TDS}}</div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <div>Fast Tag : {{objectDetails['fast tag']}}</div>
+                </ion-col>
+                <ion-col>
+                    <div>On Road : {{objectDetails['on road price']}}</div>
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+    </ion-card>
+    <form [formGroup]="emiForm">
+        <ion-list>
+            <ion-item>
+                <ion-select interface="popover" [(ngModel)]="ngbrandId" formControlName="brandId" (ionChange)="getModels(ngbrandId)">
+                    <ion-select-option>Select</ion-select-option>
+                    <ion-select-option *ngFor="let brand of allBrands" [value]="brand.id">
+                        {{brand.brand_name}}
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-select interface="popover" [(ngModel)]="ngModelId" formControlName="modelId" (ionChange)="getVarient(ngModelId)">
+                    <ion-select-option>Select</ion-select-option>
+                    <ion-select-option *ngFor="let model of allCarModels" [value]="model.id">
+                        {{model.model_name}}
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-select interface="popover" [(ngModel)]="ngVarientId" formControlName="varientId" (ionChange)="getAllDetailsCar(ngVarientId)">
+                    <ion-select-option>Select</ion-select-option>
+                    <ion-select-option *ngFor="let varient of allCarVarient" [value]="varient.id">
+                        {{varient.variant}}
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-radio-group formControlName="emi_type" (ionChange)='onEmiType(emiForm.value)' value="on_road">
+                <ion-list-header>
+                    <ion-label>Emi Type</ion-label>
+                </ion-list-header>
+                <ion-item>
+                    <ion-label>On-Road</ion-label>
+                    <ion-radio slot="start" color="primary" value="on_road"></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Ex-Showroom</ion-label>
+                    <ion-radio slot="start" color="primary" value="ex_showroom"></ion-radio>
+                </ion-item>
+            </ion-radio-group>
+        </ion-list>
+        <ion-list>
+            <ion-item>
+                <ion-label title="Interest Rate  {{intrest_rate}} % ">
+                    Interest Rate ( {{intrest_rate}} %)
+                </ion-label>
+                <ion-range formControlName="interest_rate" (ionChange)='onIntrestChange(emiForm.value)' value="100">
+                </ion-range>
+            </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item>
+                <ion-label>Loan Period</ion-label>
+                <ion-select formControlName="period" (ionChange)="onMonthChange(emiForm.value)">
+                    <ion-select-option *ngFor="let month of months" [value]="month.value">
+                        {{month.title}}
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+
+        <ion-list>
+            <ion-item>
+                <ion-label>Down Payment</ion-label>
+                <ion-input formControlName='down_payment' placeholder="Enter Downpayment" type="number" (ionChange)="onDownPaymentChange(emiForm.value)"></ion-input>
+            </ion-item>
+        </ion-list>
+
+
+    </form>
+
+</ion-content>
+
+
+
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar>
+    
+     
+      <ion-item lines="none" >
+        <ion-avatar slot="start">
+          <img src="assets/icon/icon.png">
+        </ion-avatar>
+        <ion-title color="primary"><B>INCARCO</B></ion-title>
+      </ion-item>
+   
+   
+  </ion-toolbar>
+  </ion-header> -->
+
+<!-- <ion-content  class="fromstyle" [fullscreen]="true">
+  
+    <form  [formGroup]="registerForm" >
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title class="styletext">Register</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+           
+            <ion-input  class="styletext" placeholder="Enter the username" type="text" formControlName="name" name="username">
+              <ion-icon class="styletext" lot="start" name="person-outline"></ion-icon>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+           
+            <ion-input  class="styletext" placeholder="Enter the email" type="text" formControlName="email" name="email">
+              <ion-icon class="styletext" lot="start" name="mail-outline"></ion-icon>
+            </ion-input>
+          </ion-item>
+         
+         
+          <ion-item>
+          
+            <ion-input  class="styletext"  placeholder=" Enter the password"  type="password" formControlName="password" name="password">
+              <ion-icon  class="styletext" slot="start" name="key-outline"></ion-icon>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+           
+            <ion-input  class="styletext" placeholder="Enter the phone number" type="text" formControlName="phone" name="phone">
+              <ion-icon lass="styletext" slot="start" name="call-outline"></ion-icon>
+            </ion-input>
+          </ion-item>
+
+          
+  
+          
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-content>
+          <ion-item lines="none"  padding-top>
+            <ion-button type="button" fill="outline" expand="block" size="default" shape="round" color="medium" (click)="onClickBackButton()">
+              Back
+              <ion-icon slot="start"  name="backspace-outline"></ion-icon>
+              
+            </ion-button>
+            <ion-button expand="full" fill="outline" size="default" shape="round" color="light" type="submit" [disabled]="!registerForm.valid" (click)="onFormSubmit(registerForm.value)">
+              Submit 
+              <ion-icon slot="start" name="save-outline"></ion-icon>
+             
+            </ion-button>
+            
+          </ion-item>
+          
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </ion-content>
+  
+   -->

@@ -1,0 +1,152 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 2
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons (click)="onClickLogOut()">
+      <ion-title color="primary"><B>INCARCO</B></ion-title>
+      <ion-item>
+        <ion-avatar>
+          <img src="assets/img/logProfile.jpg">
+        </ion-avatar>
+      </ion-item>
+    </ion-buttons>
+   
+  </ion-toolbar>
+  </ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="initializeApp(true,$event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid  fixed>
+  <ion-row >
+    <ion-col size="12">
+  <ion-slides pager="true" [options]="slideOpts"  >
+    <ion-slide class="card-background-page" *ngFor="let objSlideData of arraySlide"> 
+      <ion-card >
+          <img src="{{objSlideData.slider_image}}"/>
+          <ion-card-subtitle class="card-title">{{objSlideData.caption}}</ion-card-subtitle>
+          <!-- <ion-card-title class="card-subtitle">Card Subtitle</ion-card-title>     -->
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  </ion-col>
+</ion-row>
+</ion-grid>
+  
+
+
+<!-- <ion-text class="text_head">
+ Popular Car
+</ion-text> -->
+
+
+<ion-button color="dark"  expand="block" fill="outline">Popular Car</ion-button>
+
+
+
+
+<div class="thumnails">
+  <div class="list-thumbnail">
+    <div class="img-thumb"   *ngFor="let objItem of arrayPopularCars" >
+      <ion-card (click)="onClickDetailsPage(objItem,'CAR')">
+        <img src="{{objItem.main_thumb_url}}">
+          <ion-card-title class="card_head1">{{objItem.brand_name.brand_name}}  </ion-card-title>
+        <ion-card-content class="ion-text-wrap card_head2">
+          {{objItem.description}}
+        </ion-card-content>
+        </ion-card>
+    </div>
+  </div>
+</div>
+
+<ion-button color="dark" expand="block" fill="outline"> Latest Cars</ion-button>
+
+
+
+
+<div class="thumnails">
+  <div class="list-thumbnail">
+    <div class="img-thumb"   *ngFor="let objItem of arrayLatestCars" >
+    
+      <ion-card (click)="onClickDetailsPage(objItem,'CAR')">
+        <img src="{{objItem.main_thumb_url}}">
+          <ion-card-title class="card_head1">{{objItem.brand_name.brand_name}}  </ion-card-title>
+        <ion-card-content class="ion-text-wrap card_head2">
+          {{objItem.description}}
+        </ion-card-content>
+        
+        </ion-card>
+    
+     
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<ion-button color="dark" expand="block" fill="outline"> Popular Bikes</ion-button>
+
+<div class="thumnails">
+  <div class="list-thumbnail">
+    <div class="img-thumb"   *ngFor="let objItem of arrayPopularBikes" >
+    
+      <ion-card (click)="onClickDetailsPage(objItem,'BIKE')">
+        <img src="{{objItem.main_thumb_url}}">
+          <ion-card-title class="card_head1">{{objItem.brand_name.brand_name_bike}}  </ion-card-title>
+        <ion-card-content class="ion-text-wrap card_head2">
+          {{objItem.description}}
+        </ion-card-content>
+        
+        </ion-card>
+    
+     
+    </div>
+  </div>
+</div>
+
+
+<ion-button color="dark" expand="block" fill="outline"> Latest Bikes</ion-button>
+
+
+
+<div class="thumnails">
+  <div class="list-thumbnail">
+    <div class="img-thumb"   *ngFor="let objItem of arrayLatestBikes" >
+    
+      <ion-card (click)="onClickDetailsPage(objItem,'BIKE')">
+        <img src="{{objItem.main_thumb_url}}">
+          <ion-card-title class="card_head1">{{objItem.brand_name.brand_name_bike}}  </ion-card-title>
+        <ion-card-content class="ion-text-wrap card_head2">
+          {{objItem.description}}
+        </ion-card-content>
+        
+        </ion-card>
+    
+     
+    </div>
+  </div>
+</div>
+
+</ion-content>  
+
+
+
+ 
+
+
+
+
+

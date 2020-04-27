@@ -1,0 +1,34 @@
+<ion-header >
+  <ion-toolbar>   
+    <ion-buttons (click)="onClickLogOut()">
+      <ion-title color="primary"><B>INCARCO</B></ion-title>
+      <ion-item>
+        <ion-avatar>
+          <img src="assets/img/logProfile.jpg">
+        </ion-avatar>
+      </ion-item>
+    </ion-buttons>
+   
+  </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>DATA</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Toggle</ion-label>
+      <ion-toggle slot="end"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Radio</ion-label>
+      <ion-radio slot="end"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Checkbox</ion-label>
+      <ion-checkbox slot="start"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>

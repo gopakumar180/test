@@ -1,0 +1,81 @@
+<ion-header>
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-button (click)="onClickCloseModel()">
+                <ion-icon name="arrow-back-circle-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Search Data</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding>
+
+    <ion-list *ngFor="let item of arrayOfAllVehicleDetails">
+        <ion-item *ngIf="this.strTypeVehicle =='bick'" button (click)="onClickDetailsPage()">
+
+            <ion-thumbnail slot="start">
+                <img src="assets/img/img_slaid3.jpg">
+            </ion-thumbnail>
+            <ion-label>
+                <h2>{{item.brand_name.brand_name_bike}}</h2>
+                <p>{{item.model_name.model_name_bike}}</p>
+            </ion-label>
+            <ion-text fill="outline" slot="end">Rs:{{item.avg_ex_show_room_price}}</ion-text>
+        </ion-item>
+        <ion-item *ngIf="this.strTypeVehicle =='car'" button (click)="onClickDetailsPage()">
+
+            <ion-thumbnail slot="start">
+                <img src="assets/img/img_slaid3.jpg">
+            </ion-thumbnail>
+            <ion-label>
+                <h2>{{item.brand_name.brand_name_bike}}</h2>
+                <p>{{item.model_name.model_name_bike}}</p>
+            </ion-label>
+            <ion-text fill="outline" slot="end">Rs:{{item.avg_ex_show_room_price}}</ion-text>
+
+        </ion-item>
+    </ion-list>
+
+    <!-- <ion-list *ngFor="let item of arrayData">
+      <ion-item button >
+  
+          <ion-thumbnail slot="start">
+            <img src="assets/img/img_slaid3.jpg">
+          </ion-thumbnail>                  
+          <ion-label>
+            <h2>NO Data Found</h2>
+            <p>...........</p>
+          </ion-label>
+          <ion-text fill="outline" slot="end">0.00</ion-text>
+        </ion-item>
+        
+    </ion-list> -->
+
+
+
+
+</ion-content>
+
+<!-- <ion-content [fullscreen]="true">
+  
+  <ion-refresher slot="fixed" (ionRefresh)="loadData(true, $event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+ 
+  <ion-list>
+    <ion-item *ngFor="let user of users" tappable (click)="updateUser(user.id)">
+      <ion-thumbnail slot="start">
+        <img [src]="user.avatar">
+      </ion-thumbnail>
+      <ion-label>
+        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  
+</ion-content> -->

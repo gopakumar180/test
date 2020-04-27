@@ -1,0 +1,51 @@
+ ion-toolbar {
+  --background: translucent;
+}
+
+// .fixed[scrollx=true], div[scrolly=true] {
+//   position: relative;
+//   overflow: hidden;
+
+//   ::-webkit-scrollbar {
+//     display: none;
+//   }
+// }
+
+// .fixed[scrollx=true] {
+//   overflow-x: auto;
+// }
+
+// .fixed[scrolly=true] {
+//   overflow-y: auto;
+// }
+
+
+form {
+  position: relative;
+  top: 30%;
+  // left: 0%;
+  // right: 50%;
+  // margin: 0 auto;
+  // margin-top: 0;
+  // margin-left: 0;
+ 
+}
+
+ion-button {
+  margin-top: 15px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+ion-input {
+    text-align: center;
+}
+
+// .styletext{
+//      color: rgb(10, 10, 10);
+// }
+
+// .fromstyle {
+//    --ion-background-color:rgb(226, 228, 235);
+// }

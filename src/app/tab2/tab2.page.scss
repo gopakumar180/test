@@ -1,0 +1,123 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+.card-background-page {
+
+  ion-card {
+    position: relative;
+    text-align: center;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+
+}
+.card_style {
+  height: 120px;
+  width: 85px;
+  
+}
+.card-label {
+  font-size: 0.8em;
+ // position: absolute;
+  //top: 52%;
+ // width: 100%;
+  color: #777575;
+}
+
+
+
+// .horizontal-cards {
+//   ion-card {
+//       display: inline-block;
+//       width: 140px;
+//       min-width: 140px;
+//   }
+// }
+
+
+.card_head1 {
+  position: inherit;
+  padding-left: 5px;
+  padding-top: 0px;
+  font-size: 1.0em;
+  //color: #ffff;
+  font-weight: bold;
+   //top: 30%;
+}
+
+.card_head2 {
+  padding-left: 5px;
+  color: #3a2f2f;
+  padding-top: 0px;
+  text-overflow:ellipsis;
+  -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+    overflow: hidden !important;
+    height: 65px;
+    white-space: initial;
+}
+
+.text_description {
+  display: block;
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.thumnails{
+  text-align: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  .list-thumbnail{
+    height: 100%;
+    white-space: nowrap;
+    .img-thumb{
+      display: inline-block;
+      border: 0px solid #ddd;
+      border-radius: 1px;
+      padding: 0px;
+      width: 140px;
+      min-width: 140px;
+      max-height: 100px;
+      margin:0 2px 0 0; 
+    }
+    // .selected-img{
+    //   border: 2px solid #da1414;
+    // }
+  }
+}
+::-webkit-scrollbar { 
+  display: none; 
+}
+
+.p_text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 200px;
+
+}
+
+
+
+
+
+

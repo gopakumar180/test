@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="onBackDetails()">
+                <ion-icon name="arrow-back-circle-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Search Data</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+    <form [formGroup]="leadFrom">
+        <ion-card>
+            <ion-card-content>
+                <ion-item>
+                    <ion-input placeholder="Enter the name" type="text" formControlName="txtName" name="txtName">
+                        <ion-icon lot="start" name="mail-outline"></ion-icon>
+                    </ion-input>
+                </ion-item>
+
+
+                <ion-item>
+                    <ion-input placeholder=" Enter the phone" type="text" formControlName="txtPhone" name="txtPhone">
+                        <ion-icon slot="start" name="key-outline"></ion-icon>
+                    </ion-input>
+                </ion-item>
+                <ion-item lines="none" padding-top>
+                    <ion-button type="button" fill="outline" expand="block" size="default" shape="round" color="medium" (click)="onBackDetails()">
+                        Back
+                        <ion-icon slot="start" name="backspace-outline"></ion-icon>
+                    </ion-button>
+                    <ion-button expand="full" fill="outline" size="default" shape="round" color="medium" type="submit" [disabled]="!leadFrom.valid" (click)="onFormSubmit(leadFrom.value)">
+                        Submit
+                        <ion-icon slot="start" name="save-outline"></ion-icon>
+                    </ion-button>
+
+                </ion-item>
+
+            </ion-card-content>
+        </ion-card>
+    </form>
+
+</ion-content>

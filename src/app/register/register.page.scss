@@ -1,0 +1,32 @@
+// form {
+//     position: relative;
+//     top: 30%;
+//     // left: 0%;
+//     // right: 50%;
+//     // margin: 0 auto;
+//     // margin-top: 0;
+//     // margin-left: 0;
+//   }
+ion-button {
+    margin-top: 15px;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+ion-input {
+    text-align: center;
+}
+
+.text-black {
+    color: rgb(46, 44, 44);
+    font-size: small;
+}
+
+.styletext {
+    color: rgb(250, 248, 248);
+}
+
+.fromstyle {
+    --ion-background-color: rgb(50, 75, 202);
+}
